@@ -1,0 +1,15 @@
+plugins {
+    id 'distribution'
+    id 'org.gradle.crypto.checksum'
+	id 'me.julb.gradleplugins.semanticversioning'
+}
+
+import org.gradle.crypto.checksum.Checksum
+
+task createChecksums(type: Checksum, dependsOn: 'assembleDist') {
+    files = fileTree(dir: "${buildDir}/distributions")
+    outputDir = new File("${buildDir}/distributions")
+    algorithm = Checksum.Algorithm.SHA256
+}
+
+build.dependsOn createChecksums

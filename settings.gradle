@@ -1,0 +1,13 @@
+pluginManagement {
+    plugins {
+        id 'org.gradle.crypto.checksum' version '1.2.0'
+        id 'me.julb.gradleplugins.semanticversioning' version '1.0.5'
+    }
+
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        mavenCentral()
+        jcenter()
+    }
+}
