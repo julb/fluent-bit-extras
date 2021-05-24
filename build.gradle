@@ -7,7 +7,9 @@ plugins {
 import org.gradle.crypto.checksum.Checksum
 
 task createChecksums(type: Checksum, dependsOn: 'assembleDist') {
-    files = fileTree(dir: "${buildDir}/distributions")
+    files = fileTree(dir: "${buildDir}/distributions").matching {
+        exclude "**/*.sha256"
+    }
     outputDir = new File("${buildDir}/distributions")
     algorithm = Checksum.Algorithm.SHA256
 }
